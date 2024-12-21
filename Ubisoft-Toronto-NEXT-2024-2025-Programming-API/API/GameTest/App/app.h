@@ -39,7 +39,9 @@ namespace App
 	// GLUT_BITMAP_9_BY_15, GLUT_BITMAP_8_BY_13, GLUT_BITMAP_TIMES_ROMAN_10, GLUT_BITMAP_TIMES_ROMAN_24
 	// GLUT_BITMAP_HELVETICA_10, GLUT_BITMAP_HELVETICA_12, GLUT_BITMAP_HELVETICA_18	
 	//-------------------------------------------------------------------------------------------
-	void Print(const float x, const float y, const char *text, const float r = 1.0f, const float g = 1.0f, const float b = 1.0f, void *font = GLUT_BITMAP_HELVETICA_18);
+	void Print(const float x, const float y, const char *text, 
+		const float r = 1.0f, const float g = 1.0f, const float b = 1.0f, 
+		void *font = GLUT_BITMAP_HELVETICA_18);
 
 	//-------------------------------------------------------------------------------------------
 	// CSimpleSprite *CreateSprite(const char *fileName, int columns, int rows)
