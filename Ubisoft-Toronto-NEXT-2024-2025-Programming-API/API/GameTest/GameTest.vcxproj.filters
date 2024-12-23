@@ -24,7 +24,7 @@
     <ClCompile Include="miniaudio\miniaudio.cpp">
       <Filter>API\third_party\miniaudio</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerMove.cpp" />
+    <ClCompile Include="BirbMove.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -55,7 +55,7 @@
     <ClInclude Include="miniaudio\miniaudio.h">
       <Filter>API\third_party\miniaudio</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerMove.h" />
+    <ClInclude Include="BirbMove.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="API">

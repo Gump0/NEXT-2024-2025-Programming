@@ -9,7 +9,7 @@
 #include <math.h>  
 //------------------------------------------------------------------------
 #include "app\app.h"
-#include "PlayerMove.h"
+#include "BirbMove.h"
 //------------------------------------------------------------------------
 // 
 
@@ -17,14 +17,14 @@
 // Create class instances.
 //------------------------------------------------------------------------
 
-PlayerMove playerMove; // instance of playermove class
+BirbMove birbMove; // instance of birbMove class
 
 //------------------------------------------------------------------------
 // Called before first update. Do any initial setup here.
 //------------------------------------------------------------------------
 void Init()
 {
-	playerMove.InitPlayerSprites();
+	birbMove.InitBirbSprites();
 }
 
 //------------------------------------------------------------------------
@@ -33,7 +33,8 @@ void Init()
 //------------------------------------------------------------------------
 void Update(const float deltaTime)
 {
-	//UpdatePlayerSprites();
+	birbMove.birbSprite->Update(deltaTime);
+	birbMove.BirbController();
 	//------------------------------------------------------------------------
 	// Sample Sound.
 	//------------------------------------------------------------------------
@@ -53,7 +54,7 @@ void Update(const float deltaTime)
 //------------------------------------------------------------------------
 void Render()
 {	
-	playerMove.birbSprite->Draw();
+	birbMove.birbSprite->Draw();
 }
 //------------------------------------------------------------------------
 // Add your shutdown code here. Called when the APP_QUIT_KEY is pressed.
