@@ -9,7 +9,7 @@
 #include <math.h>  
 //------------------------------------------------------------------------
 #include "app\app.h"
-#include "BirbMove.h"
+#include "BirbManager.h"
 //------------------------------------------------------------------------
 // 
 
@@ -17,24 +17,23 @@
 // Create class instances.
 //------------------------------------------------------------------------
 
-BirbMove birbMove; // instance of birbMove class
+BirbManager birbManager; // instance of BirbManager class ( See BirbManager For Details )
 
 //------------------------------------------------------------------------
 // Called before first update. Do any initial setup here.
 //------------------------------------------------------------------------
-void Init()
-{
-	birbMove.InitBirbSprites();
+void Init() {
+	birbManager.SpawnBirb();
 }
 
 //------------------------------------------------------------------------
 // Update your simulation here. deltaTime is the elapsed time since the last update in ms.
 // This will be called at no greater frequency than the value of APP_MAX_FRAME_RATE
 //------------------------------------------------------------------------
-void Update(const float deltaTime)
-{
-	birbMove.birbSprite->Update(deltaTime);
-	birbMove.BirbController();
+void Update(const float deltaTime) {
+	birbManager.UpdateBirbs();
+	
+	
 	//------------------------------------------------------------------------
 	// Sample Sound.
 	//------------------------------------------------------------------------
@@ -52,15 +51,13 @@ void Update(const float deltaTime)
 // Add your display calls here (DrawLine,Print, DrawSprite.) 
 // See App.h 
 //------------------------------------------------------------------------
-void Render()
-{	
-	birbMove.birbSprite->Draw();
+void Render() {	
+	birbManager.RenderBirbs();
 }
 //------------------------------------------------------------------------
 // Add your shutdown code here. Called when the APP_QUIT_KEY is pressed.
 // Just before the app exits.
 //------------------------------------------------------------------------
-void Shutdown()
-{	
+void Shutdown() {	
 	
 }
