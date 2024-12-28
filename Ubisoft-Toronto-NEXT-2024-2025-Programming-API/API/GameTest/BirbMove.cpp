@@ -63,3 +63,7 @@ void BirbMove::BirbController() {
 void BirbMove::RenderBirb() {
 	birbSprite->Draw();
 }
+
+void BirbMove::UpdateAnim(float deltaTime) {
+	birbSprite->Update(deltaTime);
+}

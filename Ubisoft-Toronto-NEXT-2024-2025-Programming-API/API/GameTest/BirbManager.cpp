@@ -42,9 +42,27 @@ void BirbManager::RenderBirbs() {
 	}
 }
 
+void BirbManager::UpdateBirbAnims(float deltaTime) {
+	for (auto& birb : birbs) {
+		birb->UpdateAnim(deltaTime);
+	}
+}
+
 bool BirbManager::RandomDir() { // (0) left == false || (1) right == true
 	int randRoll = rand() % 2; // Roll random int (either 0 or 1)
-	return randRoll == 1;
+	switch (randRoll) {
+	case true:
+		return true;
+		break;
+
+	case false:
+		return false;
+		break;
+
+	default: // for debug
+		return true;
+		break;
+	}
 }
 
 float BirbManager::RandomSpawnHeight() {

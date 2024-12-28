@@ -32,6 +32,7 @@ void Init() {
 //------------------------------------------------------------------------
 void Update(const float deltaTime) {
 	birbManager.UpdateBirbs();
+	birbManager.UpdateBirbAnims(deltaTime);
 	
 	
 	//------------------------------------------------------------------------

@@ -12,6 +12,7 @@ public:
 	void BirbController(); // method that handles player movement and sprites
 	void InitBirbSprites(float height, bool flyDir); // instantiates birb 
 	void RenderBirb(); // method to be called by BirbManager class to render birb sprite
+	void UpdateAnim(float deltaTime); // called by BirbManager class to update birb animations
 	CSimpleSprite* birbSprite;
 private:
 	float moveSpeed = 5.0f, animSpeed = 1.0f / 15.0f;

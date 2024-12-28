@@ -15,6 +15,7 @@ public:
 	void BirbKill(); // Handles killing birb when player shoots birb
 	void UpdateBirbs(); // calls the "BirbController()" method across every instance of the BirbMove class
 	void RenderBirbs(); // called in GameTest/GameManager class to render every birb to the screen
+	void UpdateBirbAnims(float deltaTime); // ensure every birb is updating their corresponding animations
 
 	int maxBirbCount = 6; // limits the # of birbs present on screen
 private:
