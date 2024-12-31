@@ -14,10 +14,6 @@ enum // animation states
 	anim_Death,
 };
 
-void BirbMove::DestroyBirb() {
-	//delete BirbMove;
-}
-
 void BirbMove::KillBirb() {
 
 }
@@ -27,14 +23,14 @@ void BirbMove::InitBirbSprites(float height, bool flyDir) {
 	flyDirection = flyDir;
 	if (flyDirection) { // if true (going right)
 		birbSprite->SetPosition(0.0f, height);
-		birbSprite->CreateAnimation(anim_FlyRight, animSpeed, { 17,18,19,20,21,22,23,24 });
+		birbSprite->CreateAnimation(anim_FlyRight, animSpeed, { 16,17,18,19,20,21,22,23 });
 		birbSprite->SetAnimation(anim_FlyRight);
 		birbSprite->SetScale(5.0f);
 
 	}
 	else { // if false (going left)
 		birbSprite->SetPosition(800.0f, height); // spawn at the very far right for now
-		birbSprite->CreateAnimation(anim_FlyLeft, animSpeed, { 9,10,11,12,13,14,15,16 });
+		birbSprite->CreateAnimation(anim_FlyLeft, animSpeed, { 8,9,10,11,12,13,14,15 });
 		birbSprite->SetAnimation(anim_FlyLeft);
 		birbSprite->SetScale(5.0f);
 	}
@@ -66,4 +62,11 @@ void BirbMove::RenderBirb() {
 
 void BirbMove::UpdateAnim(float deltaTime) {
 	birbSprite->Update(deltaTime);
+}
+
+bool BirbMove::BirbInBounds() {
+	if (moveX > 1200 || moveX < -200) {
+		return true;
+	}
+	return false;
 }

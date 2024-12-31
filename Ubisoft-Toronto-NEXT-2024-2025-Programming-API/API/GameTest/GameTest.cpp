@@ -11,7 +11,6 @@
 #include "app\app.h"
 #include "BirbManager.h"
 //------------------------------------------------------------------------
-// 
 
 //------------------------------------------------------------------------
 // Create class instances.
@@ -23,7 +22,10 @@ BirbManager birbManager; // instance of BirbManager class ( See BirbManager For 
 // Called before first update. Do any initial setup here.
 //------------------------------------------------------------------------
 void Init() {
-	birbManager.SpawnBirb();
+	int numberOfBirbs = 6; // Determines the maximum number of birbs that can be active at a time
+	for (int i = 0; i < numberOfBirbs; i++) {
+		birbManager.SpawnBirb();
+	}
 }
 
 //------------------------------------------------------------------------

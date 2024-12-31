@@ -11,29 +11,39 @@ void BirbManager::SpawnBirb() {
 		std::cout << "Cannot spawn more birbs. Maximum count reached.\n";
 		return;
 	}
-	auto birb = std::make_unique<BirbMove>(); // create new birb instance
-	float spawnHeight = RandomSpawnHeight(); // generate spawn height
-	bool direciton = RandomDir(); // generate spawn location and flying direction
+	BirbMove *newBirb = new BirbMove(RandomSpawnHeight(), RandomDir(), this);
 
-	birb->InitBirbSprites(spawnHeight, direciton); // call InitBirbSprites in specific class instance
+	newBirb->InitBirbSprites(RandomSpawnHeight(), RandomDir());
 
-	birbs.push_back(std::move(birb));
+	birbs.push_back(newBirb);
+}
+
+void BirbManager::DestroyBirb(BirbMove* birbToRemove) {
+	auto it = std::find(birbs.begin(), birbs.end(), birbToRemove);
+	if (it != birbs.end()) {
+		delete* it;
+		birbs.erase(it);
+	}
+}
+
+void BirbManager::BirbKill(BirbMove* birbToRemove) {
+
 }
 
 void BirbManager::UpdateBirbs()
 {
-	for (const auto& birb : birbs)
-	{
-		birb->BirbController(); // move birbs
+	for (auto it = birbs.begin(); it != birbs.end(); ) {
+		BirbMove* birb = *it;
+		if (birb->BirbInBounds()) { // Check if the birb is out of bounds
+			delete birb;             // Delete the birb object
+			it = birbs.erase(it);    // Erase from list and update the iterator
+			SpawnBirb();             // Make new birb!! :D
+		}
+		else {
+			birb->BirbController();  // Move birbs normally
+			++it;
+		}
 	}
-}
-
-void BirbManager::DestroyBirb() {
-
-}
-
-void BirbManager::BirbKill() {
-
 }
 
 void BirbManager::RenderBirbs() {
