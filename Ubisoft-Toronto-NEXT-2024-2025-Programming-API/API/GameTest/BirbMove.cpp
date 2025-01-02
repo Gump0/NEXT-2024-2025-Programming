@@ -29,7 +29,7 @@ void BirbMove::InitBirbSprites(float height, bool flyDir) {
 
 	}
 	else { // if false (going left)
-		birbSprite->SetPosition(800.0f, height); // spawn at the very far right for now
+		birbSprite->SetPosition(1100.0f, height); // spawn at the very far right for now
 		birbSprite->CreateAnimation(anim_FlyLeft, animSpeed, { 8,9,10,11,12,13,14,15 });
 		birbSprite->SetAnimation(anim_FlyLeft);
 		birbSprite->SetScale(5.0f);
