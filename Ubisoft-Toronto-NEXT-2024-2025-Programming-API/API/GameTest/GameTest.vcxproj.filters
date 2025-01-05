@@ -26,6 +26,7 @@
     </ClCompile>
     <ClCompile Include="BirbMove.cpp" />
     <ClCompile Include="BirbManager.cpp" />
+    <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -58,6 +59,7 @@
     </ClInclude>
     <ClInclude Include="BirbMove.h" />
     <ClInclude Include="BirbManager.h" />
+    <ClInclude Include="Player.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="API">

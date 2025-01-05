@@ -5,6 +5,9 @@
 #include "stdafx.h"
 #include "BirbManager.h"
 #include "BirbMove.h"
+using namespace std;
+
+BirbManager birbManager; // Define the global instance
 
 void BirbManager::SpawnBirb() {
 	if (birbs.size() >= maxBirbCount) { // check number of Birb instances
@@ -58,6 +61,20 @@ void BirbManager::UpdateBirbAnims(float deltaTime) {
 	}
 }
 
+void BirbManager::CollisionCheck(float x, float y) {
+	for (auto it = birbs.begin(); it != birbs.end(); ) {
+		if ((*it)->IsHit(x, y)) {
+			delete* it;
+			it = birbs.erase(it);
+			SpawnBirb();
+			playerScore++;
+		}
+		else {
+			++it; // Move to the next element
+		}
+	}
+}
+
 bool BirbManager::RandomDir() { // (0) left == false || (1) right == true
 	int randRoll = rand() % 2; // Roll random int (either 0 or 1)
 	switch (randRoll) {
@@ -77,4 +94,9 @@ bool BirbManager::RandomDir() { // (0) left == false || (1) right == true
 
 float BirbManager::RandomSpawnHeight() {
 	return 75 + static_cast<float>(rand()) / (static_cast<float>(RAND_MAX / (750 - 75)));
+}
+
+std::string BirbManager::ReturnPlayerScoreToString() {
+	std::string stri = to_string(playerScore);
+	return stri;
 }

@@ -18,13 +18,17 @@ public:
 	void UpdateBirbs(); // calls the "BirbController()" method across every instance of the BirbMove class
 	void RenderBirbs(); // called in GameTest/GameManager class to render every birb to the screen
 	void UpdateBirbAnims(float deltaTime); // ensure every birb is updating their corresponding animations
+	void CollisionCheck(float x, float y); // handles collision checks called form player action
+	
+	std::string ReturnPlayerScoreToString(); // returns player score to GameTest
 
 	int maxBirbCount = 6; // limits the # of birbs present on screen
 private:
 	bool RandomDir(); // Randomly choses left or right direction
 	float RandomSpawnHeight(); // Randomly choses spawn height of birb
-
-	int nextBirbID = 0; // Incremental ID for birb instances
+	int playerScore = 0; // tracks players current score
 	
 	std::list<BirbMove*> birbs;// List of pointers that tracks each instance of BirbMove class
 };
+
+extern BirbManager birbManager;

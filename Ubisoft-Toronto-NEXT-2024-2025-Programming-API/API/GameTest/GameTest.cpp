@@ -10,13 +10,14 @@
 //------------------------------------------------------------------------
 #include "app\app.h"
 #include "BirbManager.h"
+#include "Player.h"
 //------------------------------------------------------------------------
 
 //------------------------------------------------------------------------
 // Create class instances.
 //------------------------------------------------------------------------
 
-BirbManager birbManager; // instance of BirbManager class ( See BirbManager For Details )
+Player player; // instance of Player class ( see Player for Details )
 CSimpleSprite* backgroundTexture;
 
 //------------------------------------------------------------------------
@@ -32,6 +33,9 @@ void Init() {
 	for (int i = 0; i < numberOfBirbs; i++) {
 		birbManager.SpawnBirb();
 	}
+
+	// Init player sprites
+	player.InitPlayerSprites();
 }
 
 //------------------------------------------------------------------------
@@ -41,7 +45,8 @@ void Init() {
 void Update(const float deltaTime) {
 	birbManager.UpdateBirbs();
 	birbManager.UpdateBirbAnims(deltaTime);
-	
+	player.UpdatePlayerCrosshair();
+	//player.UpdateCrosshairAnims(deltaTime); Update player crosshair animation throws memory error fix l8r
 	
 	//------------------------------------------------------------------------
 	// Sample Sound.
@@ -63,6 +68,10 @@ void Update(const float deltaTime) {
 void Render() {	
 	backgroundTexture->Draw();
 	birbManager.RenderBirbs();
+	player.RenderCrosshair();
+
+	App::Print(450, 650, (std::string("Current Score: ") + birbManager.ReturnPlayerScoreToString()).c_str()); // Display Current Score
+	//App::Print(450, 725, "Time Remaining"); // Display Current Time Remaining
 }
 //------------------------------------------------------------------------
 // Add your shutdown code here. Called when the APP_QUIT_KEY is pressed.

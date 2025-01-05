@@ -21,6 +21,7 @@ public:
 	void UpdateAnim(float deltaTime); // called by BirbManager class to update birb animations
 
 	bool BirbInBounds(); // destroy birb isntance from memory if out of bounds
+	bool IsHit(float x, float y); // checks to see if birb has been shot
 
 	CSimpleSprite* birbSprite;
 private:

@@ -37,11 +37,11 @@ public:
     // Note: speed must be > 0, frames must have size >= 1, id must be unique among animations
     void CreateAnimation(const unsigned int id, const float speed, const std::vector<int> &frames)
     {
-        sAnimation anim;        
+        sAnimation anim;
         anim.m_id = id;
         anim.m_speed = speed;
         anim.m_frames = frames;
-        m_animations.push_back(anim);        
+        m_animations.push_back(anim);
     };
 
 private:

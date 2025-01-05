@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 // Filename: BirbMove.cpp
-// Chracter Move Script && Animations
+// Birb NPC Move Script && Animations
 ///////////////////////////////////////////////////////////////////////////////
 #include "stdafx.h"
 #include "app\app.h" // to access CSimpleSprite class
@@ -43,7 +43,6 @@ void BirbMove::BirbController() {
 			birbSprite->GetPosition(moveX, moveY);
 			moveX += moveSpeed;
 			birbSprite->SetPosition(moveX, moveY);
-		//DESTROY THE BIRB INSTANCE NOW!!!
 		break;
 
 	case false: // when flying left
@@ -51,7 +50,6 @@ void BirbMove::BirbController() {
 		birbSprite->GetPosition(moveX, moveY);
 		moveX -= moveSpeed;
 		birbSprite->SetPosition(moveX, moveY);
-		//DESTROY THE BIRB INSTANCE NOW!!!
 		break;
 	}
 }
@@ -68,5 +66,12 @@ bool BirbMove::BirbInBounds() {
 	if (moveX > 1200 || moveX < -200) {
 		return true;
 	}
+	return false;
+}
+
+bool BirbMove::IsHit(float x, float y) {
+	if (x > moveX - 20 && x < moveX + 20)
+		if(y > moveY - 20 && y < moveY + 20)
+			return true;
 	return false;
 }
