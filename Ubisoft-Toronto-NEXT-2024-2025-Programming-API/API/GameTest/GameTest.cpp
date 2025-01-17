@@ -18,7 +18,7 @@ PlayerBall playerBall; // playerball instance
 //------------------------------------------------------------------------
 void Init() {
 	playerBall.InitPlayerBall(500.0f, 400.0f);
-	playerBall.ApplyForce(25.0f, 25.0f);
+	playerBall.ApplyForce(15.0f, 15.0f);
 }
 
 //------------------------------------------------------------------------

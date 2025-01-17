@@ -20,16 +20,38 @@ void PlayerBall::PlayerController() {
 
 void PlayerBall::BallRigidBody(float deltaTime) {
 	float d = rateOfDecel * deltaTime;
-	
-	worldPosX += ballVelocityX -= d;
-	worldPosY += ballVelocityY -= d;
-	ballSprite->SetPosition(worldPosX, worldPosY);
+	//X axis physics calculations
+	switch (negativeX) {
+	case false:
+		if (ballVelocityX > 0.0f)
+				worldPosX += ballVelocityX -= d;
+		break;
 
-	if (std::abs(ballVelocityX) < 0.01f) ballVelocityX = 0.0f;
-	if (std::abs(ballVelocityY) < 0.01f) ballVelocityY = 0.0f;
+	case true:
+		if (ballVelocityX < 0.0f)
+			worldPosX += ballVelocityX += d;
+		break;
+	}
+	//Y axis physics calculations
+	switch (negativeY) {
+	case false:
+		if (ballVelocityY > 0.0f)
+				worldPosY += ballVelocityY -= d;
+		break;
+
+	case true:
+		if (ballVelocityY < 0.0f)
+			worldPosY += ballVelocityY += d;
+		break;
+	}
+
+	ballSprite->SetPosition(worldPosX, worldPosY);
 }
 
 void PlayerBall::ApplyForce(float x, float y) {
+	negativeX = (x < 0.0f);
+	negativeY = (y < 0.0f);
+
 	float forceAppliedX = x * mass;
 	float forceAppliedY = y * mass;
 	

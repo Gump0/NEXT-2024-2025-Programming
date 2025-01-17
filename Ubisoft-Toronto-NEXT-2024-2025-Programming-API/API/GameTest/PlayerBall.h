@@ -24,6 +24,7 @@ private:
 	float worldPosX = 500.0f, worldPosY = 400.0f; // detirmines the balls position in world-space
 	const float rateOfDecel = 0.033f; // Detirmines a flat rate in which the ball decelerate
 	const float mass = 0.8f; // value used for calculating physics stuff in kg? WHAT KINDA PLANET IS 0.8KG?!?!
+	bool negativeX, negativeY; // Used to prior to velocity calculations (allows for full 360 cartesian movement)
 
 	const float ballSize = 200.0f; // detirmines the height+width of ball in pixels
 	const float animSpeed = 1.0f / 15.0f; // used for sprite animations
