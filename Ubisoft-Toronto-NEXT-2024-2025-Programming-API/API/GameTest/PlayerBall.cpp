@@ -13,15 +13,28 @@ enum // animation states
 
 
 void PlayerBall::PlayerController() {
+	if (!canMove) return;
+
 
 }
 
-void PlayerBall::BallRigidBody() {
+void PlayerBall::BallRigidBody(float deltaTime) {
+	float d = rateOfDecel * deltaTime;
+	
+	worldPosX += ballVelocityX -= d;
+	worldPosY += ballVelocityY -= d;
+	ballSprite->SetPosition(worldPosX, worldPosY);
 
+	if (std::abs(ballVelocityX) < 0.01f) ballVelocityX = 0.0f;
+	if (std::abs(ballVelocityY) < 0.01f) ballVelocityY = 0.0f;
 }
 
 void PlayerBall::ApplyForce(float x, float y) {
-
+	float forceAppliedX = x * mass;
+	float forceAppliedY = y * mass;
+	
+	ballVelocityX += forceAppliedX;
+	ballVelocityY += forceAppliedY;
 }
 
 // RENDER STUFF

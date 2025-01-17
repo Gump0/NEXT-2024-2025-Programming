@@ -17,7 +17,8 @@ PlayerBall playerBall; // playerball instance
 // Called before first update. Do any initial setup here.
 //------------------------------------------------------------------------
 void Init() {
-	playerBall.InitPlayerBall(100.0f, 200.0f);
+	playerBall.InitPlayerBall(500.0f, 400.0f);
+	playerBall.ApplyForce(25.0f, 25.0f);
 }
 
 //------------------------------------------------------------------------
@@ -25,7 +26,7 @@ void Init() {
 // This will be called at no greater frequency than the value of APP_MAX_FRAME_RATE
 //------------------------------------------------------------------------
 void Update(const float deltaTime) {
-	playerBall.BallRigidBody();
+	playerBall.BallRigidBody(deltaTime);
 	playerBall.UpdateAnim(deltaTime);
 }
 
