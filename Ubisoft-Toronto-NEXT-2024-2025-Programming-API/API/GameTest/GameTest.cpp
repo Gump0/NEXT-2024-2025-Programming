@@ -9,16 +9,18 @@
 #include <math.h>  
 //------------------------------------------------------------------------
 #include "app\app.h"
+#include "StarBackground.h"
 #include "PlayerBall.h"
 
+StarBackground starB; // star background instance
 PlayerBall playerBall; // playerball instance
 
 //------------------------------------------------------------------------
 // Called before first update. Do any initial setup here.
 //------------------------------------------------------------------------
 void Init() {
-	playerBall.InitPlayerBall(500.0f, 400.0f);
-	playerBall.ApplyForce(15.0f, 15.0f);
+	starB.InitSpaceBackground();
+	playerBall.InitPlayerBall(0.0f, 0.0f);
 }
 
 //------------------------------------------------------------------------
@@ -27,6 +29,8 @@ void Init() {
 //------------------------------------------------------------------------
 void Update(const float deltaTime) {
 	playerBall.BallRigidBody(deltaTime);
+	//Animations
+	starB.AnimateBackground(deltaTime);
 	playerBall.UpdateAnim(deltaTime);
 }
 
@@ -35,6 +39,7 @@ void Update(const float deltaTime) {
 // See App.h 
 //------------------------------------------------------------------------
 void Render() {	
+	starB.RenderBackground();
 	playerBall.RenderBall();
 }
 //------------------------------------------------------------------------

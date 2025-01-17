@@ -188,6 +188,8 @@
     <ClInclude Include="App\SimpleSprite.h" />
     <ClInclude Include="miniaudio\miniaudio.h" />
     <ClInclude Include="PlayerBall.h" />
+    <ClInclude Include="PlayerController.h" />
+    <ClInclude Include="StarBackground.h" />
     <ClInclude Include="stb_image\stb_image.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -201,6 +203,8 @@
     <ClCompile Include="GameTest.cpp" />
     <ClCompile Include="miniaudio\miniaudio.cpp" />
     <ClCompile Include="PlayerBall.cpp" />
+    <ClCompile Include="PlayerController.cpp" />
+    <ClCompile Include="StarBackground.cpp" />
     <ClCompile Include="stb_image\stb_image.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

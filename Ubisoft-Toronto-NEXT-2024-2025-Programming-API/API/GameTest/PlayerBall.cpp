@@ -1,22 +1,14 @@
 ///////////////////////////////////////////////////////////////////////////////
 // Filename: PlayerBall.cpp
-// Definition file containing logic for player ball
+// Logic for the player's "golf ball"
 ///////////////////////////////////////////////////////////////////////////////
 #include "stdafx.h"
 #include "PlayerBall.h"
 
-enum // animation states
-{
+enum { // animation states
 	ball_norm, // when ball is normal ;)
 	ball_hot, // when ball is within wall breaking threshhold
 };
-
-
-void PlayerBall::PlayerController() {
-	if (!canMove) return;
-
-
-}
 
 void PlayerBall::BallRigidBody(float deltaTime) {
 	float d = rateOfDecel * deltaTime;
@@ -24,7 +16,7 @@ void PlayerBall::BallRigidBody(float deltaTime) {
 	switch (negativeX) {
 	case false:
 		if (ballVelocityX > 0.0f)
-				worldPosX += ballVelocityX -= d;
+			worldPosX += ballVelocityX -= d;
 		break;
 
 	case true:
@@ -36,7 +28,7 @@ void PlayerBall::BallRigidBody(float deltaTime) {
 	switch (negativeY) {
 	case false:
 		if (ballVelocityY > 0.0f)
-				worldPosY += ballVelocityY -= d;
+			worldPosY += ballVelocityY -= d;
 		break;
 
 	case true:
@@ -44,11 +36,15 @@ void PlayerBall::BallRigidBody(float deltaTime) {
 			worldPosY += ballVelocityY += d;
 		break;
 	}
+	if (ballVelocityX == 0.0f && ballVelocityY == 0.0f) canMove = true;
 
 	ballSprite->SetPosition(worldPosX, worldPosY);
+	if (std::abs(ballVelocityX) < 0.1f) ballVelocityX = 0.0f;
+	if (std::abs(ballVelocityY) < 0.1f) ballVelocityY = 0.0f;
 }
 
 void PlayerBall::ApplyForce(float x, float y) {
+	//canMove = false;
 	negativeX = (x < 0.0f);
 	negativeY = (y < 0.0f);
 

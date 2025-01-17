@@ -25,6 +25,8 @@
       <Filter>API\third_party\miniaudio</Filter>
     </ClCompile>
     <ClCompile Include="PlayerBall.cpp" />
+    <ClCompile Include="StarBackground.cpp" />
+    <ClCompile Include="PlayerController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -56,6 +58,8 @@
       <Filter>API\third_party\miniaudio</Filter>
     </ClInclude>
     <ClInclude Include="PlayerBall.h" />
+    <ClInclude Include="StarBackground.h" />
+    <ClInclude Include="PlayerController.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="API">
