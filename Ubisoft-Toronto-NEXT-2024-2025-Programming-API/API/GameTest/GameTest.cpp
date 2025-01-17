@@ -21,6 +21,7 @@ PlayerBall playerBall; // playerball instance
 void Init() {
 	starB.InitSpaceBackground();
 	playerBall.InitPlayerBall(0.0f, 0.0f);
+	playerBall.ApplyForce(25.0f, -10.0f); //for debugging shiz
 }
 
 //------------------------------------------------------------------------
@@ -42,6 +43,8 @@ void Update(const float deltaTime) {
 void Render() {	
 	starB.RenderBackground();
 	playerBall.RenderBall();
+
+	playerBall.DebugXY();
 }
 //------------------------------------------------------------------------
 // Add your shutdown code here. Called when the APP_QUIT_KEY is pressed.

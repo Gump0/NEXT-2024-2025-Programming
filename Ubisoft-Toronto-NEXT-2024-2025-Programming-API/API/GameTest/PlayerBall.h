@@ -16,17 +16,22 @@ public:
 	void InitPlayerBall(float spawnX, float spawnY); // serves as a constructor for this class, also inits sprites at spawn location
 	void RenderBall(); // renders ball during game run-time
 	void UpdateAnim(float deltaTime); // updates balls animations
+	void DebugXY(); // Used to show the mouse position vs ball location for debugging
 
 	bool canMove = true; // boolean that controls when 'Player Controller' class is called
 	CSimpleSprite* ballSprite; // reference to ball sprite
 private:
+	// BALL VARIABLES
 	float ballVelocityX, ballVelocityY; // stores balls current velocity values
-	float worldPosX = 500.0f, worldPosY = 400.0f; // detirmines the balls position in world-space
+	float worldPosX = 500.0f, worldPosY = 400.0f; // detirmines the balls position in world-space (THE FIRST TWO IS WORLD POS X/Y, LAST IS MOUSE POS X/Y)
 	const float rateOfDecel = 0.033f; // Detirmines a rate in which the ball decelerates
 	const float mass = 0.8f; // value used for calculating physics stuff in kg? WHAT KINDA PLANET IS 0.8KG?!?!
 	bool negativeX, negativeY; // Used prior to velocity calculations (allows for full 360 cartesian movement)
 
 	const float ballSize = 200.0f; // detirmines the height+width of ball in pixels
 	const float animSpeed = 1.0f / 15.0f; // used for sprite animations
+
+	// PLAYER CONTROLLER VARIABLES
+	float mouseX, mouseY; // Used to store current player mouse position
 };
 

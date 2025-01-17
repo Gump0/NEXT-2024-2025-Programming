@@ -11,8 +11,33 @@ enum { // animation states
 };
 
 void PlayerBall::PlayerController() {
-	if(App::IsKeyPressed(VK_LBUTTON))
-		App::PlaySound(".\\TestData\\Test.wav", true);
+	if (!App::IsKeyPressed(VK_LBUTTON)) return;
+	bool firstCall = true;
+	// Calculate directional vector
+	// V = (x2 - x1, y2 - y1)
+	float dirX = worldPosX - mouseX; // inverse direction
+	float dirY = worldPosY - mouseY; // inverse direction
+	// output normalized vector between 0-1
+	// |V| = sqrt(x^2 + y^2)
+	float magnitude = sqrt(dirX * dirX + dirY * dirY);
+	float normalizedX = dirX / magnitude;
+	float normalizedY = dirY / magnitude;
+
+	App::GetMousePos(mouseX, mouseY);
+}
+
+void PlayerBall::DebugXY() {
+	std::string x1 = std::to_string(worldPosX);
+	std::string y1 = std::to_string(worldPosY);
+	std::string x2 = std::to_string(mouseX);
+	std::string y2 = std::to_string(mouseY);
+
+	App::Print(500, 700, x1.c_str());
+	App::Print(500, 650, y1.c_str());
+	App::Print(500, 600, x2.c_str());
+	App::Print(500, 550, y2.c_str());
+
+
 }
 
 void PlayerBall::BallRigidBody(float deltaTime) {
