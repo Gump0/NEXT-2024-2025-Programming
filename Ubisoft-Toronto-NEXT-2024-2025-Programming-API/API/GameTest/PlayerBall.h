@@ -8,6 +8,7 @@
 class PlayerBall
 {
 public:
+	void PlayerController(); // allows the player to control and hit the ball.
 	void BallRigidBody(float deltaTime); // called after ball is hit, this method is ran in update until balls current velocity = 0
 	void ApplyForce(float x, float y); // method that applies directional vector to ball hit.
 
@@ -21,7 +22,7 @@ public:
 private:
 	float ballVelocityX, ballVelocityY; // stores balls current velocity values
 	float worldPosX = 500.0f, worldPosY = 400.0f; // detirmines the balls position in world-space
-	const float rateOfDecel = 0.033f; // Detirmines a flat rate in which the ball decelerates
+	const float rateOfDecel = 0.033f; // Detirmines a rate in which the ball decelerates
 	const float mass = 0.8f; // value used for calculating physics stuff in kg? WHAT KINDA PLANET IS 0.8KG?!?!
 	bool negativeX, negativeY; // Used prior to velocity calculations (allows for full 360 cartesian movement)
 

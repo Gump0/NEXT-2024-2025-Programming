@@ -29,6 +29,7 @@ void Init() {
 //------------------------------------------------------------------------
 void Update(const float deltaTime) {
 	playerBall.BallRigidBody(deltaTime);
+	playerBall.PlayerController();
 	//Animations
 	starB.AnimateBackground(deltaTime);
 	playerBall.UpdateAnim(deltaTime);

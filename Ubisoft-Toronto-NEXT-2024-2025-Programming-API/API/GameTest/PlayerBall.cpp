@@ -10,6 +10,11 @@ enum { // animation states
 	ball_hot, // when ball is within wall breaking threshhold
 };
 
+void PlayerBall::PlayerController() {
+	if(App::IsKeyPressed(VK_LBUTTON))
+		App::PlaySound(".\\TestData\\Test.wav", true);
+}
+
 void PlayerBall::BallRigidBody(float deltaTime) {
 	float d = rateOfDecel * deltaTime;
 	//X axis physics calculations
