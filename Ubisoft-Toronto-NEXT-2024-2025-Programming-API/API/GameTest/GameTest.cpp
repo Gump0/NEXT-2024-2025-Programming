@@ -21,7 +21,11 @@ PlayerBall playerBall; // playerball instance
 void Init() {
 	starB.InitSpaceBackground();
 	playerBall.InitPlayerBall(0.0f, 0.0f);
-	playerBall.ApplyForce(25.0f, -10.0f); //for debugging shiz
+	playerBall.ApplyForce(25.0f, 10.0f); //for debugging shiz
+
+	// Start looping track (made by me :D)
+	// Shameless plug https://soundcloud.com/gumpthe1/what-how
+	//App::PlaySound(".\\GameData\\loopingtrack.wav", true);
 }
 
 //------------------------------------------------------------------------
@@ -34,6 +38,8 @@ void Update(const float deltaTime) {
 	//Animations
 	starB.AnimateBackground(deltaTime);
 	playerBall.UpdateAnim(deltaTime);
+
+	if (App::IsKeyPressed(VK_RBUTTON)) playerBall.ApplyForce(2.5f, 2.5f); //for debugging shiz
 }
 
 //------------------------------------------------------------------------

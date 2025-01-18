@@ -40,8 +40,8 @@ void PlayerBall::DrawMouseLine() {
 }
 
 void PlayerBall::CalculateForce(float normalX, float normalY) {
-	float forceX = lerp(0, 25, power);
-	float forceY = lerp(0, 25, power);
+	float forceX = lerp(2.5f, 25.0f, power);
+	float forceY = lerp(2.5f, 25.0f, power);
 	forceX *= normalX;
 	forceY *= normalY;
 
@@ -56,7 +56,7 @@ void PlayerBall::DebugXY() {
 	std::string y1 = std::to_string(worldPosY);
 	std::string x2 = std::to_string(mouseX);
 	std::string y2 = std::to_string(mouseY);
-	std::string f = std::to_string(elapsedTime);
+	std::string f = std::to_string(ballVelocityY);
 
 	App::Print(500, 700, x1.c_str());
 	App::Print(500, 650, y1.c_str());
@@ -67,42 +67,28 @@ void PlayerBall::DebugXY() {
 
 void PlayerBall::BallRigidBody(float deltaTime) {
 	float d = rateOfDecel * deltaTime;
-	//X axis physics calculations
-	switch (negativeX) {
-	case false:
-		if (ballVelocityX > 0.0f)
-			worldPosX += ballVelocityX -= d;
-		break;
 
-	case true:
-		if (ballVelocityX < 0.0f)
-			worldPosX += ballVelocityX += d;
-		break;
+	// X-axis physics calculations
+	if (ballVelocityX != 0.0f) {
+		worldPosX += ballVelocityX;             // Update position based on velocity
+		ballVelocityX -= (ballVelocityX > 0.0f ? d : -d); // Reduce velocity to zero by rateOfDecel
+		if (std::abs(ballVelocityX) < 0.01f)    // Stop if velocity is negligible
+			ballVelocityX = 0.0f;
 	}
-	//Y axis physics calculations
-	switch (negativeY) {
-	case false:
-		if (ballVelocityY > 0.0f)
-			worldPosY += ballVelocityY -= d;
-		break;
 
-	case true:
-		if (ballVelocityY < 0.0f)
-			worldPosY += ballVelocityY += d;
-		break;
+	// Y-axis physics calculations
+	if (ballVelocityY != 0.0f) {
+		worldPosY += ballVelocityY;             // same thing here :P
+		ballVelocityY -= (ballVelocityY > 0.0f ? d : -d);
+		if (std::abs(ballVelocityY) < 0.01f)
+			ballVelocityY = 0.0f;
 	}
-	if (ballVelocityX == 0.0f && ballVelocityY == 0.0f) canMove = true;
 
 	ballSprite->SetPosition(worldPosX, worldPosY);
-	if (std::abs(ballVelocityX) < 0.1f) ballVelocityX = 0.0f;
-	if (std::abs(ballVelocityY) < 0.1f) ballVelocityY = 0.0f;
 }
 
 void PlayerBall::ApplyForce(float x, float y) {
 	//canMove = false;
-	negativeX = (x < 0.0f);
-	negativeY = (y < 0.0f);
-
 	float forceAppliedX = x * mass;
 	float forceAppliedY = y * mass;
 	
@@ -112,7 +98,7 @@ void PlayerBall::ApplyForce(float x, float y) {
 
 // RENDER STUFF
 void PlayerBall::InitPlayerBall(float spawnX, float spawnY) {
-	ballSprite = App::CreateSprite(".\\GamaData\\starball.bmp", 3, 1);
+	ballSprite = App::CreateSprite(".\\GameData\\starball.bmp", 3, 1);
 	ballSprite->SetPosition(spawnX, spawnY);
 	ballSprite->CreateAnimation(ball_norm, animSpeed, { 0,1,2 });
 	// CREATE HOT ANIMATIONS ONCE WE GET THERE XD

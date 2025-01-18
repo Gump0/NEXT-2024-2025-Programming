@@ -10,7 +10,7 @@ enum {
 };
 
 void StarBackground::InitSpaceBackground() {
-	starSprite = App::CreateSprite(".\\GamaData\\bg-stars-space.bmp", 3, 2);
+	starSprite = App::CreateSprite(".\\GameData\\bg-stars-space.bmp", 3, 2);
 	starSprite->SetPosition(400.0f, 500.0f); // center of screen
 	starSprite->CreateAnimation(background_idle, animSpeed, { 0,1,2,3,4,5 });
 	starSprite->SetAnimation(background_idle);

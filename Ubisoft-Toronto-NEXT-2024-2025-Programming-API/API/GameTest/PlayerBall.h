@@ -28,7 +28,6 @@ private:
 	float worldPosX = 500.0f, worldPosY = 400.0f; // detirmines the balls position in world-space (THE FIRST TWO IS WORLD POS X/Y, LAST IS MOUSE POS X/Y)
 	const float rateOfDecel = 0.033f; // Detirmines a rate in which the ball decelerates
 	const float mass = 0.8f; // value used for calculating physics stuff in kg? WHAT KINDA PLANET IS 0.8KG?!?!
-	bool negativeX, negativeY; // Used prior to velocity calculations (allows for full 360 cartesian movement)
 
 	const float ballSize = 200.0f; // detirmines the height+width of ball in pixels
 	const float animSpeed = 1.0f / 15.0f; // used for sprite animations
@@ -38,9 +37,9 @@ private:
 	float normalizedX, normalizedY; // Stores final normalized calculation used for CalculateForce() method
 	float elapsedTime; // Tracks time mouse button has been held for
 	float power; // stores power ratio between 0-1
-	
 	float lerp(float a, float b, float t) { // used to interperlate between two values by t
-		return a + t * (b - a);				// where t is between 0-1
+		return a + t * (b - a);				// where t is between 0 - 1
 	}
-};
 
+	float forceX, forceY; // temp
+};
