@@ -10,16 +10,21 @@ enum { // animation states
 };
 
 void SaturnHaloGoal::UpdateHalo(float deltaTime) {
-	BallCollisionCheck();
 	UpdateAnim(deltaTime);
 }
 
-void SaturnHaloGoal::BallCollisionCheck() {
-
+bool SaturnHaloGoal::BallCollisionCheck(float ballX, float ballY) {
+	float size = haloSize * haloScale;
+	if (ballX > worldPosX - size && ballX < worldPosX + size)
+		if (ballY > worldPosY - size && ballY < worldPosY + size) {
+			EndLevel();
+			return true;
+		}
+	return false;
 }
 
 void SaturnHaloGoal::EndLevel() {
-
+	App::PlaySound(".\\GameData\\hitsound.wav", false);
 }
 
 void SaturnHaloGoal::InitHaloGoal(float spawnX, float spawnY) {

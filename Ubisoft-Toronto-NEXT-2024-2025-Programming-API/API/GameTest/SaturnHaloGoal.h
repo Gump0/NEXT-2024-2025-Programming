@@ -14,10 +14,10 @@ public:
 	void InitHaloGoal(float spawnX, float spawnY); // inits halo goal sprites
 	void RenderHalo(); // calls render function for haloSprite
 	void UpdateAnim(float deltaTime); // updates the halos
+	bool BallCollisionCheck(float ballX, float ballY); // returns true if ball is colliding with ring
 
 	CSimpleSprite* haloSprite; // reference to halo sprite
 private:
-	void BallCollisionCheck(); // checks for collision with the playerball
 	void EndLevel(); // called when ball reaches end
 
 	float worldPosX = 0.0f, worldPosY = 0.0f; // detirmines the halos position in world-space ( INITIALIZED BY InitHaloGoal() )

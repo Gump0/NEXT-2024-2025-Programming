@@ -35,12 +35,11 @@ void Init() {
 // This will be called at no greater frequency than the value of APP_MAX_FRAME_RATE
 //------------------------------------------------------------------------
 void Update(const float deltaTime) {
-	playerBall.BallRigidBody(deltaTime);
-	playerBall.PlayerController(deltaTime);
+	playerBall.BallUpdate(deltaTime);
 	saturn.UpdateHalo(deltaTime);
+	saturn.BallCollisionCheck(playerBall.worldPosX, playerBall.worldPosY);
 	//Animations
 	starB.AnimateBackground(deltaTime);
-	playerBall.UpdateAnim(deltaTime);
 
 	if (App::IsKeyPressed(VK_RBUTTON)) playerBall.ApplyForce(2.5f, 2.5f); //for debugging shiz
 }

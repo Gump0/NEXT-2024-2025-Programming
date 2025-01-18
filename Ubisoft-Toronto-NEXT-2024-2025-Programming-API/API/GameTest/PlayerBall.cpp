@@ -11,6 +11,12 @@ enum { // animation states
 	ball_hot, // when ball is within wall breaking threshhold
 };
 
+void PlayerBall::BallUpdate(float deltaTime) {
+	PlayerController(deltaTime);
+	BallRigidBody(deltaTime);
+	UpdateAnim(deltaTime);
+}
+
 void PlayerBall::PlayerController(float deltaTime) {
 	if (!App::IsKeyPressed(VK_LBUTTON)) { CalculateForce(normalizedX, normalizedY); return; }
 	// Calculate directional vector
