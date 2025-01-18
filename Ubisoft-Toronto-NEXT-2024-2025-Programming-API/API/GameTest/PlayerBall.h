@@ -8,8 +8,10 @@
 class PlayerBall
 {
 public:
-	void PlayerController(); // allows the player to control and hit the ball.
+	void PlayerController(float deltaTime); // allows the player to control and hit the ball.
+	void DrawMouseLine(); // draws line between mouse and ball for visual stuff
 	void BallRigidBody(float deltaTime); // called after ball is hit, this method is ran in update until balls current velocity = 0
+	void CalculateForce(float normalX, float normalY); // pass through normalized vectors and use elapsed time sine wave to calculate force applied
 	void ApplyForce(float x, float y); // method that applies directional vector to ball hit.
 
 	// SPRITES AND BALL INITIALIZATION
@@ -33,5 +35,12 @@ private:
 
 	// PLAYER CONTROLLER VARIABLES
 	float mouseX, mouseY; // Used to store current player mouse position
+	float normalizedX, normalizedY; // Stores final normalized calculation used for CalculateForce() method
+	float elapsedTime; // Tracks time mouse button has been held for
+	float power; // stores power ratio between 0-1
+	
+	float lerp(float a, float b, float t) { // used to interperlate between two values by t
+		return a + t * (b - a);				// where t is between 0-1
+	}
 };
 

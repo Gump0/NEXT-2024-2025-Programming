@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Gleb\\Documents\\GitHub\\NEXT_2024-2025_Programming_GlebBelyakov\\Ubisoft-Toronto-NEXT-2024-2025-Programming-API\\API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7A12010B-608E-4FBE-9089-494DBB9078A1}|GameTest\\GameTest.vcxproj|C:\\Users\\Gleb\\Documents\\GitHub\\NEXT_2024-2025_Programming_GlebBelyakov\\Ubisoft-Toronto-NEXT-2024-2025-Programming-API\\API\\GameTest\\GameTest.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7A12010B-608E-4FBE-9089-494DBB9078A1}|GameTest\\GameTest.vcxproj|solutionrelative:GameTest\\GameTest.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7A12010B-608E-4FBE-9089-494DBB9078A1}|GameTest\\GameTest.vcxproj|C:\\Users\\Gleb\\Documents\\GitHub\\NEXT_2024-2025_Programming_GlebBelyakov\\Ubisoft-Toronto-NEXT-2024-2025-Programming-API\\API\\GameTest\\PlayerBall.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{7A12010B-608E-4FBE-9089-494DBB9078A1}|GameTest\\GameTest.vcxproj|solutionrelative:GameTest\\PlayerBall.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7A12010B-608E-4FBE-9089-494DBB9078A1}|GameTest\\GameTest.vcxproj|C:\\Users\\Gleb\\Documents\\GitHub\\NEXT_2024-2025_Programming_GlebBelyakov\\Ubisoft-Toronto-NEXT-2024-2025-Programming-API\\API\\GameTest\\PlayerBall.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{7A12010B-608E-4FBE-9089-494DBB9078A1}|GameTest\\GameTest.vcxproj|solutionrelative:GameTest\\PlayerBall.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A12010B-608E-4FBE-9089-494DBB9078A1}|GameTest\\GameTest.vcxproj|C:\\Users\\Gleb\\Documents\\GitHub\\NEXT_2024-2025_Programming_GlebBelyakov\\Ubisoft-Toronto-NEXT-2024-2025-Programming-API\\API\\GameTest\\GameTest.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7A12010B-608E-4FBE-9089-494DBB9078A1}|GameTest\\GameTest.vcxproj|solutionrelative:GameTest\\GameTest.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7A12010B-608E-4FBE-9089-494DBB9078A1}|GameTest\\GameTest.vcxproj|C:\\Users\\Gleb\\Documents\\GitHub\\NEXT_2024-2025_Programming_GlebBelyakov\\Ubisoft-Toronto-NEXT-2024-2025-Programming-API\\API\\GameTest\\App\\app.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -26,43 +26,43 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "PlayerBall.cpp",
               "DocumentMoniker": "C:\\Users\\Gleb\\Documents\\GitHub\\NEXT_2024-2025_Programming_GlebBelyakov\\Ubisoft-Toronto-NEXT-2024-2025-Programming-API\\API\\GameTest\\PlayerBall.cpp",
               "RelativeDocumentMoniker": "GameTest\\PlayerBall.cpp",
-              "ToolTip": "C:\\Users\\Gleb\\Documents\\GitHub\\NEXT_2024-2025_Programming_GlebBelyakov\\Ubisoft-Toronto-NEXT-2024-2025-Programming-API\\API\\GameTest\\PlayerBall.cpp",
-              "RelativeToolTip": "GameTest\\PlayerBall.cpp",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAACMAAAAiAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Gleb\\Documents\\GitHub\\NEXT_2024-2025_Programming_GlebBelyakov\\Ubisoft-Toronto-NEXT-2024-2025-Programming-API\\API\\GameTest\\PlayerBall.cpp*",
+              "RelativeToolTip": "GameTest\\PlayerBall.cpp*",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAABQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-01-17T15:31:26.884Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "PlayerBall.h",
               "DocumentMoniker": "C:\\Users\\Gleb\\Documents\\GitHub\\NEXT_2024-2025_Programming_GlebBelyakov\\Ubisoft-Toronto-NEXT-2024-2025-Programming-API\\API\\GameTest\\PlayerBall.h",
               "RelativeDocumentMoniker": "GameTest\\PlayerBall.h",
               "ToolTip": "C:\\Users\\Gleb\\Documents\\GitHub\\NEXT_2024-2025_Programming_GlebBelyakov\\Ubisoft-Toronto-NEXT-2024-2025-Programming-API\\API\\GameTest\\PlayerBall.h",
               "RelativeToolTip": "GameTest\\PlayerBall.h",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABUAAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACMAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-01-17T15:31:25.283Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "GameTest.cpp",
               "DocumentMoniker": "C:\\Users\\Gleb\\Documents\\GitHub\\NEXT_2024-2025_Programming_GlebBelyakov\\Ubisoft-Toronto-NEXT-2024-2025-Programming-API\\API\\GameTest\\GameTest.cpp",
               "RelativeDocumentMoniker": "GameTest\\GameTest.cpp",
               "ToolTip": "C:\\Users\\Gleb\\Documents\\GitHub\\NEXT_2024-2025_Programming_GlebBelyakov\\Ubisoft-Toronto-NEXT-2024-2025-Programming-API\\API\\GameTest\\GameTest.cpp",
               "RelativeToolTip": "GameTest\\GameTest.cpp",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABcAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-01-17T16:07:01.279Z",
               "EditorCaption": ""

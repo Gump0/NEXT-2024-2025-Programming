@@ -3,6 +3,7 @@
 // Logic for the player's "golf ball"
 ///////////////////////////////////////////////////////////////////////////////
 #include "stdafx.h"
+#include "cmath"
 #include "PlayerBall.h"
 
 enum { // animation states
@@ -10,9 +11,8 @@ enum { // animation states
 	ball_hot, // when ball is within wall breaking threshhold
 };
 
-void PlayerBall::PlayerController() {
-	if (!App::IsKeyPressed(VK_LBUTTON)) return;
-	bool firstCall = true;
+void PlayerBall::PlayerController(float deltaTime) {
+	if (!App::IsKeyPressed(VK_LBUTTON)) { CalculateForce(normalizedX, normalizedY); return; }
 	// Calculate directional vector
 	// V = (x2 - x1, y2 - y1)
 	float dirX = worldPosX - mouseX; // inverse direction
@@ -20,10 +20,35 @@ void PlayerBall::PlayerController() {
 	// output normalized vector between 0-1
 	// |V| = sqrt(x^2 + y^2)
 	float magnitude = sqrt(dirX * dirX + dirY * dirY);
-	float normalizedX = dirX / magnitude;
-	float normalizedY = dirY / magnitude;
+	normalizedX = dirX / magnitude;
+	normalizedY = dirY / magnitude;
+	
+	// loop through 0% - 100% power
+	// y = sin(x)
+	elapsedTime += deltaTime;
+	power = std::sin(elapsedTime / 350);
 
 	App::GetMousePos(mouseX, mouseY);
+}
+
+void PlayerBall::DrawMouseLine() {
+	if (!App::IsKeyPressed(VK_LBUTTON)) return;
+	float r = 1;
+	float g = std::cos(elapsedTime / 350);;
+	float b = std::cos(elapsedTime / 350);;
+	App::DrawLine(worldPosX, worldPosY, mouseX, mouseY, r, g, b);
+}
+
+void PlayerBall::CalculateForce(float normalX, float normalY) {
+	float forceX = lerp(0, 25, power);
+	float forceY = lerp(0, 25, power);
+	forceX *= normalX;
+	forceY *= normalY;
+
+	ApplyForce(forceX, forceY);
+
+	normalizedX = 0.0f;
+	normalizedY = 0.0f;
 }
 
 void PlayerBall::DebugXY() {
@@ -31,13 +56,13 @@ void PlayerBall::DebugXY() {
 	std::string y1 = std::to_string(worldPosY);
 	std::string x2 = std::to_string(mouseX);
 	std::string y2 = std::to_string(mouseY);
+	std::string f = std::to_string(elapsedTime);
 
 	App::Print(500, 700, x1.c_str());
 	App::Print(500, 650, y1.c_str());
 	App::Print(500, 600, x2.c_str());
 	App::Print(500, 550, y2.c_str());
-
-
+	App::Print(500, 400, f.c_str());
 }
 
 void PlayerBall::BallRigidBody(float deltaTime) {

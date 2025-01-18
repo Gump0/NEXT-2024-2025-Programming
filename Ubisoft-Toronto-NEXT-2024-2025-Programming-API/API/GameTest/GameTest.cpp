@@ -30,7 +30,7 @@ void Init() {
 //------------------------------------------------------------------------
 void Update(const float deltaTime) {
 	playerBall.BallRigidBody(deltaTime);
-	playerBall.PlayerController();
+	playerBall.PlayerController(deltaTime);
 	//Animations
 	starB.AnimateBackground(deltaTime);
 	playerBall.UpdateAnim(deltaTime);
@@ -43,7 +43,7 @@ void Update(const float deltaTime) {
 void Render() {	
 	starB.RenderBackground();
 	playerBall.RenderBall();
-
+	playerBall.DrawMouseLine();
 	playerBall.DebugXY();
 }
 //------------------------------------------------------------------------
