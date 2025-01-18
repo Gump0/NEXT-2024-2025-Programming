@@ -27,6 +27,8 @@
     <ClCompile Include="PlayerBall.cpp" />
     <ClCompile Include="StarBackground.cpp" />
     <ClCompile Include="SaturnHaloGoal.cpp" />
+    <ClCompile Include="BoundryManager.cpp" />
+    <ClCompile Include="LevelData.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -60,6 +62,8 @@
     <ClInclude Include="PlayerBall.h" />
     <ClInclude Include="StarBackground.h" />
     <ClInclude Include="SaturnHaloGoal.h" />
+    <ClInclude Include="BoundryManager.h" />
+    <ClInclude Include="LevelData.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="API">

@@ -76,9 +76,9 @@ void PlayerBall::BallRigidBody(float deltaTime) {
 
 	// X-axis physics calculations
 	if (ballVelocityX != 0.0f) {
-		worldPosX += ballVelocityX;             // Update position based on velocity
-		ballVelocityX -= (ballVelocityX > 0.0f ? d : -d); // Reduce velocity to zero by rateOfDecel
-		if (std::abs(ballVelocityX) < 0.01f)    // Stop if velocity is negligible
+		worldPosX += ballVelocityX;							// Update position based on velocity
+		ballVelocityX -= (ballVelocityX > 0.0f ? d : -d);	// Reduce velocity to zero by rateOfDecel
+		if (std::abs(ballVelocityX) < 0.01f)				// Stop if velocity is negligible
 			ballVelocityX = 0.0f;
 	}
 

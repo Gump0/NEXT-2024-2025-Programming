@@ -12,10 +12,15 @@
 #include "StarBackground.h"
 #include "PlayerBall.h"
 #include "SaturnHaloGoal.h"
+#include "BoundryManager.h"
+#include "LevelData.h"
 
 StarBackground starB; // star background instance
 PlayerBall playerBall; // playerball instance
 SaturnHaloGoal saturn; // saturn goal instance
+
+BoundryManager boundryMan; // boundry manager instance
+LevelData lvlData; // level data instance
 
 //------------------------------------------------------------------------
 // Called before first update. Do any initial setup here.
@@ -25,7 +30,9 @@ void Init() {
 	playerBall.InitPlayerBall(0.0f, 0.0f);
 	saturn.InitHaloGoal(850.0f, 600.0f);
 
-	// Start looping track (made by me :D)
+	boundryMan.ConstructWalls(lvlData.GetLevel1Walls());
+
+	// Start looping track ( made by me :D )
 	// Shameless plug https://soundcloud.com/gumpthe1/what-how
 	//App::PlaySound(".\\GameData\\loopingtrack.wav", true);
 }
@@ -36,8 +43,11 @@ void Init() {
 //------------------------------------------------------------------------
 void Update(const float deltaTime) {
 	playerBall.BallUpdate(deltaTime);
+	
 	saturn.UpdateHalo(deltaTime);
 	saturn.BallCollisionCheck(playerBall.worldPosX, playerBall.worldPosY);
+
+	boundryMan.UpdateWalls(playerBall.worldPosX, playerBall.worldPosY);
 	//Animations
 	starB.AnimateBackground(deltaTime);
 
@@ -50,10 +60,14 @@ void Update(const float deltaTime) {
 //------------------------------------------------------------------------
 void Render() {	
 	starB.RenderBackground();
+	
 	playerBall.RenderBall();
 	playerBall.DrawMouseLine();
 	playerBall.DebugXY();
+	
 	saturn.RenderHalo();
+	
+	boundryMan.DrawWalls();
 }
 //------------------------------------------------------------------------
 // Add your shutdown code here. Called when the APP_QUIT_KEY is pressed.
