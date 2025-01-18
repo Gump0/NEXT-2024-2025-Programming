@@ -103,7 +103,7 @@ void PlayerBall::InitPlayerBall(float spawnX, float spawnY) {
 	ballSprite->CreateAnimation(ball_norm, animSpeed, { 0,1,2 });
 	// CREATE HOT ANIMATIONS ONCE WE GET THERE XD
 	ballSprite->SetAnimation(ball_norm);
-	ballSprite->SetScale(0.50f);
+	ballSprite->SetScale(ballScale);
 }
 
 void PlayerBall::RenderBall() {

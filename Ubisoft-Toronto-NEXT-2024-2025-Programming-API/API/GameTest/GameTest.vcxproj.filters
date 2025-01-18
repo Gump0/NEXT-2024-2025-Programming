@@ -26,6 +26,7 @@
     </ClCompile>
     <ClCompile Include="PlayerBall.cpp" />
     <ClCompile Include="StarBackground.cpp" />
+    <ClCompile Include="SaturnHaloGoal.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -58,6 +59,7 @@
     </ClInclude>
     <ClInclude Include="PlayerBall.h" />
     <ClInclude Include="StarBackground.h" />
+    <ClInclude Include="SaturnHaloGoal.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="API">

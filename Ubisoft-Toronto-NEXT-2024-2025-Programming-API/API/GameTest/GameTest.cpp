@@ -11,9 +11,11 @@
 #include "app\app.h"
 #include "StarBackground.h"
 #include "PlayerBall.h"
+#include "SaturnHaloGoal.h"
 
 StarBackground starB; // star background instance
 PlayerBall playerBall; // playerball instance
+SaturnHaloGoal saturn; // saturn goal instance
 
 //------------------------------------------------------------------------
 // Called before first update. Do any initial setup here.
@@ -21,7 +23,7 @@ PlayerBall playerBall; // playerball instance
 void Init() {
 	starB.InitSpaceBackground();
 	playerBall.InitPlayerBall(0.0f, 0.0f);
-	playerBall.ApplyForce(25.0f, 10.0f); //for debugging shiz
+	saturn.InitHaloGoal(850.0f, 600.0f);
 
 	// Start looping track (made by me :D)
 	// Shameless plug https://soundcloud.com/gumpthe1/what-how
@@ -35,6 +37,7 @@ void Init() {
 void Update(const float deltaTime) {
 	playerBall.BallRigidBody(deltaTime);
 	playerBall.PlayerController(deltaTime);
+	saturn.UpdateHalo(deltaTime);
 	//Animations
 	starB.AnimateBackground(deltaTime);
 	playerBall.UpdateAnim(deltaTime);
@@ -51,6 +54,7 @@ void Render() {
 	playerBall.RenderBall();
 	playerBall.DrawMouseLine();
 	playerBall.DebugXY();
+	saturn.RenderHalo();
 }
 //------------------------------------------------------------------------
 // Add your shutdown code here. Called when the APP_QUIT_KEY is pressed.

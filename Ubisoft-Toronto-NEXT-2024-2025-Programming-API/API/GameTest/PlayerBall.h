@@ -25,11 +25,12 @@ public:
 private:
 	// BALL VARIABLES
 	float ballVelocityX, ballVelocityY; // stores balls current velocity values
-	float worldPosX = 500.0f, worldPosY = 400.0f; // detirmines the balls position in world-space (THE FIRST TWO IS WORLD POS X/Y, LAST IS MOUSE POS X/Y)
+	float worldPosX = 500.0f, worldPosY = 400.0f; // detirmines the balls position in world-space
 	const float rateOfDecel = 0.033f; // Detirmines a rate in which the ball decelerates
 	const float mass = 0.8f; // value used for calculating physics stuff in kg? WHAT KINDA PLANET IS 0.8KG?!?!
 
-	const float ballSize = 200.0f; // detirmines the height+width of ball in pixels
+	const float ballSize = 200.0f; // detirmines the height+width of ball in pixels ( for collision )
+	const float ballScale = 0.35f; // used by InitPlayerBall() method to set balls scale
 	const float animSpeed = 1.0f / 15.0f; // used for sprite animations
 
 	// PLAYER CONTROLLER VARIABLES
