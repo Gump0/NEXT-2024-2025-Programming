@@ -47,7 +47,9 @@ void Update(const float deltaTime) {
 	saturn.UpdateHalo(deltaTime);
 	saturn.BallCollisionCheck(playerBall.worldPosX, playerBall.worldPosY);
 
-	boundryMan.UpdateWalls(playerBall.worldPosX, playerBall.worldPosY);
+	if (boundryMan.CollisionCheck(playerBall.worldPosX, playerBall.worldPosY))
+		playerBall.WallBounce();
+
 	//Animations
 	starB.AnimateBackground(deltaTime);
 

@@ -5,10 +5,6 @@
 #include "stdafx.h"
 #include "BoundryManager.h"
 
-void BoundryManager::UpdateWalls(float ballX, float ballY) {
-	CollisionCheck(ballX, ballY);
-}
-
 void BoundryManager::ConstructWalls(const std::vector<Wall>& walls) {
 	c_walls = walls;
 }
@@ -24,8 +20,8 @@ void BoundryManager::DrawWalls() {
 
 bool BoundryManager::CollisionCheck(float ballX, float ballY) {
 	for (const Wall& wall : c_walls) {
-		if (ballX > wall.x - (wall.width / 2) && ballX < wall.x + (wall.width / 2))
-			if (ballY > wall.y - (wall.height / 2) && ballY < wall.y + (wall.height / 2)) {
+		if (ballX > wall.x - (wall.width) && ballX < wall.x + (wall.width))
+			if (ballY > wall.y - (wall.height) && ballY < wall.y + (wall.height)) {
 				App::PlaySound(".\\GameData\\hitsound.wav", false);
 				return true;
 			}

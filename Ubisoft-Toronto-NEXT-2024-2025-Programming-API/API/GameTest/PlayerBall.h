@@ -13,13 +13,14 @@ public:
 	void DrawMouseLine(); // draws line between mouse and ball for visual stuff
 	void CalculateForce(float normalX, float normalY); // pass through normalized vectors and use elapsed time sine wave to calculate force applied
 	void ApplyForce(float x, float y); // method that applies directional vector to ball hit.
+	void WallBounce(); // when ball hits wall, invert it's current velocity vector
 
 	// SPRITES AND BALL INITIALIZATION
 	void InitPlayerBall(float spawnX, float spawnY); // serves as a constructor for this class, also inits sprites at spawn location
 	void RenderBall(); // renders ball during game run-time
 	void DebugXY(); // Used to show the mouse position vs ball location for debugging
 
-	bool canMove = true; // boolean that controls when 'Player Controller' class is called
+	int moveCount = 0; // integer that keeps track of how many times the player has hit the ball
 	float worldPosX = 500.0f, worldPosY = 400.0f; // detirmines the balls position in world-space
 
 	CSimpleSprite* ballSprite; // reference to ball sprite

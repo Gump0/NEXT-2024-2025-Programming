@@ -6,10 +6,10 @@
 #include "LevelData.h"
 
 std::vector<Wall> level1Walls = {   // Predefine wall data for Level 1
-    {500, 25, 1100, 50},
-    {500, 750, 1100, 50},
-    {25, 385, 50, 675},
-    {1000, 385, 50, 675},
+    {500, 25, 1100, 50},    // north wall
+    {500, 750, 1100, 50},   // south wall
+    {25, 385, 50, 675},     // west wall
+    {1000, 385, 50, 675},   // east wall
 };
 
 std::vector<Wall> LevelData::GetLevel1Walls() {

@@ -13,11 +13,9 @@ struct Wall {				// wall constructor
 class BoundryManager
 {
 public:
-	void UpdateWalls(float ballX, float ballY); // general update method to encapsulate methods
+	bool CollisionCheck(float ballX, float ballY); // in charge of checking when the ball collides with a wall
 	void ConstructWalls(const std::vector<Wall>& walls /*List of walls*/); // builds the level based of the list of walls passed in this method
 	void DrawWalls(); // uses DrawLine() method provided to draw visual boundries
 private:
-	bool CollisionCheck(float ballX, float ballY); // in charge of checking when the ball collides with a wall
-
 	std::vector<Wall> c_walls; // stores the walls currently being used in run-time
 };

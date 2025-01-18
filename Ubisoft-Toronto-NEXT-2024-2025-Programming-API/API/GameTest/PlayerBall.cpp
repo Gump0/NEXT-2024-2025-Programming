@@ -94,12 +94,18 @@ void PlayerBall::BallRigidBody(float deltaTime) {
 }
 
 void PlayerBall::ApplyForce(float x, float y) {
-	//canMove = false;
 	float forceAppliedX = x * mass;
 	float forceAppliedY = y * mass;
 	
 	ballVelocityX += forceAppliedX;
 	ballVelocityY += forceAppliedY;
+
+	moveCount++;
+}
+
+void PlayerBall::WallBounce() {
+	ballVelocityX = -ballVelocityX;
+	ballVelocityY = -ballVelocityY;
 }
 
 // RENDER STUFF

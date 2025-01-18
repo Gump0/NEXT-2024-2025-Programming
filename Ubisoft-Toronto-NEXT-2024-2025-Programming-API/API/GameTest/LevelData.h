@@ -8,14 +8,7 @@
 class LevelData
 {
 public:
-	//LevelData(const std::vector<Wall>& levelWalls) : walls(levelWalls) {} // constructor used to init level data
-
-    const std::vector<Wall>& getWalls() const {
-        return walls;
-    }
-
-    std::vector<Wall> GetLevel1Walls();
+    std::vector<Wall> GetLevel1Walls(); // return level 1 walls
 private:
     std::vector<Wall> walls; // wall specific to level
 };
-
