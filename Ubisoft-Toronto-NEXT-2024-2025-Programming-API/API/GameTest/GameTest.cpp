@@ -46,6 +46,7 @@ void Update(const float deltaTime) {
 	if (saturn.BallCollisionCheck(playerBall.worldPosX, playerBall.worldPosY)) { // if ball hits goal move to next level ( if possible )
 		gm.NextLevel();
 		playerBall.InitPlayerBall(gm.currentBallSpawnX, gm.currentBallSpawnY);
+		playerBall.ResetMoveCount();
 		saturn.InitHaloGoal(gm.currentHaloSpawnX, gm.currentHaloSpawnY);
 	}
 
@@ -67,6 +68,7 @@ void Render() {
 	
 	playerBall.RenderBall();
 	playerBall.DrawMouseLine();
+	playerBall.DisplayHitCount();
 	
 	saturn.RenderHalo();
 

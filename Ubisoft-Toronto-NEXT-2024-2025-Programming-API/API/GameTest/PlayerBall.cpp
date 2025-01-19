@@ -8,7 +8,6 @@
 
 enum { // animation states
 	ball_norm, // when ball is normal ;)
-	ball_hot, // when ball is within wall breaking threshhold
 };
 
 void PlayerBall::BallUpdate(float deltaTime) {
@@ -18,23 +17,29 @@ void PlayerBall::BallUpdate(float deltaTime) {
 }
 
 void PlayerBall::PlayerController(float deltaTime) {
-	if (!App::IsKeyPressed(VK_LBUTTON)) { CalculateForce(normalizedX, normalizedY); return; }
-	// Calculate directional vector
-	// V = (x2 - x1, y2 - y1)
-	float dirX = worldPosX - mouseX; // inverse direction
-	float dirY = worldPosY - mouseY; // inverse direction
-	// output normalized vector between 0-1
-	// |V| = sqrt(x^2 + y^2)
-	float magnitude = sqrt(dirX * dirX + dirY * dirY);
-	normalizedX = dirX / magnitude;
-	normalizedY = dirY / magnitude;
-	
-	// loop through 0% - 100% power
-	// y = sin(x)
-	elapsedTime += deltaTime;
-	power = (std::sin(elapsedTime / 350) + 1.0f) / 2.0f;
+	static bool wasButtonPressed = false;
+	bool isButtonPressed = App::IsKeyPressed(VK_LBUTTON);
 
-	App::GetMousePos(mouseX, mouseY);
+	if (!isButtonPressed && wasButtonPressed) { // executes only if mouse button is released
+		CalculateForce(normalizedX, normalizedY);
+		hitCount++;
+	}
+	if (isButtonPressed) {
+		float dirX = worldPosX - mouseX;
+		float dirY = worldPosY - mouseY;
+		float magnitude = sqrt(dirX * dirX + dirY * dirY);
+
+		if (magnitude > 0.0f) {
+			normalizedX = dirX / magnitude;
+			normalizedY = dirY / magnitude;
+		}
+		// Loop through 0% - 100% power
+		elapsedTime += deltaTime;
+		power = (std::sin(elapsedTime / 350) + 1.0f) / 2.0f;
+
+		App::GetMousePos(mouseX, mouseY);
+	}
+	wasButtonPressed = isButtonPressed; // Update the previous button state
 }
 
 void PlayerBall::DrawMouseLine() {
@@ -85,8 +90,6 @@ void PlayerBall::ApplyForce(float x, float y) {
 	
 	ballVelocityX += forceAppliedX;
 	ballVelocityY += forceAppliedY;
-
-	moveCount++;
 }
 
 void PlayerBall::WallBounce() {
@@ -94,12 +97,15 @@ void PlayerBall::WallBounce() {
 	ballVelocityY = -ballVelocityY;
 }
 
+void PlayerBall::ResetMoveCount() {
+	hitCount = 0;
+}
+
 // RENDER STUFF
 void PlayerBall::InitPlayerBall(float spawnX, float spawnY) {
 	ballSprite = App::CreateSprite(".\\GameData\\starball.bmp", 3, 1);
 	ballSprite->SetPosition(spawnX, spawnY);
 	ballSprite->CreateAnimation(ball_norm, animSpeed, { 0,1,2 });
-	// CREATE HOT ANIMATIONS ONCE WE GET THERE XD
 	ballSprite->SetAnimation(ball_norm);
 	ballSprite->SetScale(ballScale);
 
@@ -113,4 +119,9 @@ void PlayerBall::RenderBall() {
 
 void PlayerBall::UpdateAnim(float deltaTime) {
 	ballSprite->Update(deltaTime);
+}
+
+void PlayerBall::DisplayHitCount() {
+	std::string hitText = std::to_string(hitCount);
+	App::Print(100, 100, hitText.c_str());
 }

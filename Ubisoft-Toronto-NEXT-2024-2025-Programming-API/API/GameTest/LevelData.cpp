@@ -70,7 +70,7 @@ const float LevelData::playerSpawnPoints[8] =
 
 const float LevelData::haloSpawnPoints[8] =
 { 850.0f, 650.0f,       // level 1 points = index 0 + 1 ( x, y )
-  515.0f, 650.0f,       // level 2 points = index 2 + 3 ( x, y ).....
+  515.0f, 700.0f,       // level 2 points = index 2 + 3 ( x, y ).....
   850.0f, 125.0f, 
   -100.0f, -100.0f };
 

@@ -18,8 +18,10 @@ public:
 	// SPRITES AND BALL INITIALIZATION
 	void InitPlayerBall(float spawnX, float spawnY); // serves as a constructor for this class, also inits sprites at spawn location
 	void RenderBall(); // renders ball during game run-time
+	void DisplayHitCount(); // displays the total number of times the ball was hit
+	void ResetMoveCount(); // on level switch, reset the hitCount total to zero
 
-	int moveCount = 0; // integer that keeps track of how many times the player has hit the ball
+	int hitCount = 0; // integer that keeps track of how many times the player has hit the ball
 	float worldPosX = 500.0f, worldPosY = 400.0f; // detirmines the balls position in world-space
 
 	CSimpleSprite* ballSprite; // reference to ball sprite
