@@ -5,11 +5,11 @@
 #include "stdafx.h"
 #include "BoundryManager.h"
 
-void BoundryManager::ConstructWalls(const std::vector<Wall>& walls) {
+void BoundryManager::ConstructWalls(const std::vector<Wall>& walls) { // set current wallset to the one parsed by GameManager
 	c_walls = walls;
 }
 
-void BoundryManager::DrawWalls() {
+void BoundryManager::DrawWalls() { // Draw walls accurately according to wallset data
 	for (const Wall& wall : c_walls) {
 		App::DrawLine(wall.x - (wall.width / 2), wall.y + (wall.height / 2), wall.x + (wall.width / 2), wall.y + (wall.height / 2)); // top face
 		App::DrawLine(wall.x - (wall.width / 2), wall.y - (wall.height / 2), wall.x + (wall.width / 2), wall.y - (wall.height / 2)); // bottom face
@@ -18,7 +18,7 @@ void BoundryManager::DrawWalls() {
 	}
 }
 
-bool BoundryManager::CollisionCheck(float ballX, float ballY, float deltaTime) {
+bool BoundryManager::CollisionCheck(float ballX, float ballY, float deltaTime) { // check if ball collides with us!
 	for (Wall& wall : c_walls) {
 		if (wall.cooldown > 0)
 			wall.cooldown -= deltaTime;

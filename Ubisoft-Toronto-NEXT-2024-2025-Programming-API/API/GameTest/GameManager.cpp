@@ -6,12 +6,12 @@
 #include "stdafx.h"
 #include "GameManager.h"
 
-void GameManager::BuildWorld(int levelIndex) {
-	// index 0 = level 1
+void GameManager::BuildWorld(int levelIndex) { // in charge with constructing new levels
+	// index 0 = level 1					  // and passing correct data to other classes
 	// index 1 = level 2
 	// index 2 = level 3
-	switch (levelIndex) {
-	case 0:
+	switch (levelIndex) { // probably not the best way to do this?
+	case 0:				 // based off index passed into this method we grab the corresponding level
 		boundryMan.ConstructWalls(lvlData.GetLevel1Walls());
 		break;
 
@@ -36,7 +36,7 @@ void GameManager::BuildWorld(int levelIndex) {
 	currentHaloSpawnY = lvlData.haloSpawnPoints[haloSpawnIndex + 1];
 }
 
-void GameManager::NextLevel() {
+void GameManager::NextLevel() { // increases level index and builds next level
 	levelIndex++;
 	if (levelIndex >= totalLevelCount)
 		// Maybe go to "The End" Screen??
@@ -44,20 +44,20 @@ void GameManager::NextLevel() {
 	BuildWorld(levelIndex);
 }
 
-bool GameManager::CheckPlayerCollision(float ballPosX, float ballPosY, float deltaTime) {
-	if (boundryMan.CollisionCheck(ballPosX, ballPosY, deltaTime))
+bool GameManager::CheckPlayerCollision(float ballPosX, float ballPosY, float deltaTime) { // calls boundryMan's collision check
+	if (boundryMan.CollisionCheck(ballPosX, ballPosY, deltaTime))						 // returns true if player is touching
 		return true;
 	return false;
 }
 
-void GameManager::DrawBoundries() {
+void GameManager::DrawBoundries() { // calls api draw method for each wall in boundryMan
 	boundryMan.DrawWalls();
 }
 
-void GameManager::DestroyCurrentLevel() {
-
+void GameManager::DestroyCurrentLevel() { // used to destroy old level data
+										  // likely won't need since we update off parsed data
 }
 
-int GameManager::GetLevelIndex() {
+int GameManager::GetLevelIndex() { // returns the current level index
 	return levelIndex;
 }

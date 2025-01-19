@@ -10,13 +10,13 @@ enum { // animation states
 	ball_norm, // when ball is normal ;)
 };
 
-void PlayerBall::BallUpdate(float deltaTime) {
+void PlayerBall::BallUpdate(float deltaTime) { // local update method
 	PlayerController(deltaTime);
 	BallRigidBody(deltaTime);
 	UpdateAnim(deltaTime);
 }
 
-void PlayerBall::PlayerController(float deltaTime) {
+void PlayerBall::PlayerController(float deltaTime) { // handles logic related to player input, and applying force to 'ball'
 	static bool wasButtonPressed = false;
 	bool isButtonPressed = App::IsKeyPressed(VK_LBUTTON);
 
@@ -47,7 +47,7 @@ void PlayerBall::PlayerController(float deltaTime) {
 	wasButtonPressed = isButtonPressed; // Update the previous button state
 }
 
-void PlayerBall::DrawMouseLine() {
+void PlayerBall::DrawMouseLine() { // Draws line from player mouse position, to 'balls' anchor-point
 	if (!App::IsKeyPressed(VK_LBUTTON)) return;
 	float r = 1;
 	float g = 1 - power;
@@ -55,7 +55,7 @@ void PlayerBall::DrawMouseLine() {
 	App::DrawLine(worldPosX, worldPosY, mouseX, mouseY, r, g, b);
 }
 
-void PlayerBall::CalculateForce(float normalX, float normalY) {
+void PlayerBall::CalculateForce(float normalX, float normalY) { // calculates the force based off of oscillated power, and normalized vector parsed..
 	float forceX = lerp(2.5f, 25.0f, power);
 	float forceY = lerp(2.5f, 25.0f, power);
 	forceX *= normalX;
@@ -67,7 +67,7 @@ void PlayerBall::CalculateForce(float normalX, float normalY) {
 	normalizedY = 0.0f;
 }
 
-void PlayerBall::BallRigidBody(float deltaTime) {
+void PlayerBall::BallRigidBody(float deltaTime) { // Simulates the balls 'floaty' phyics
 	float d = rateOfDecel * deltaTime;
 
 	// X-axis physics calculations
@@ -89,25 +89,25 @@ void PlayerBall::BallRigidBody(float deltaTime) {
 	ballSprite->SetPosition(worldPosX, worldPosY);
 }
 
-void PlayerBall::ApplyForce(float x, float y) {
-	float forceAppliedX = x * mass;
+void PlayerBall::ApplyForce(float x, float y) { // called upon player input,
+	float forceAppliedX = x * mass;				// applys force to ball specified by parsed x,y values
 	float forceAppliedY = y * mass;
 	
 	ballVelocityX += forceAppliedX;
 	ballVelocityY += forceAppliedY;
 }
 
-void PlayerBall::WallBounce() {
+void PlayerBall::WallBounce() { // make the 'ball' bounce!
 	ballVelocityX = -ballVelocityX;
 	ballVelocityY = -ballVelocityY;
 }
 
-void PlayerBall::ResetMoveCount() {
+void PlayerBall::ResetMoveCount() { // called when next level is loaded, resetting player score per level
 	hitCount = 0;
 }
 
 // RENDER STUFF
-void PlayerBall::InitPlayerBall(float spawnX, float spawnY) {
+void PlayerBall::InitPlayerBall(float spawnX, float spawnY) { // construct ball sprites and init data
 	ballSprite = App::CreateSprite(".\\GameData\\starball.bmp", 3, 1);
 	ballSprite->SetPosition(spawnX, spawnY);
 	ballSprite->CreateAnimation(ball_norm, animSpeed, { 0,1,2 });
@@ -118,15 +118,15 @@ void PlayerBall::InitPlayerBall(float spawnX, float spawnY) {
 	worldPosY = spawnY;
 }
 
-void PlayerBall::RenderBall() {
+void PlayerBall::RenderBall() { // calls api draw method
 	ballSprite->Draw();
 }
 
-void PlayerBall::UpdateAnim(float deltaTime) {
+void PlayerBall::UpdateAnim(float deltaTime) { // calls api sprite update method
 	ballSprite->Update(deltaTime);
 }
 
-void PlayerBall::DisplayHitCount() {
+void PlayerBall::DisplayHitCount() { // displays players current score
 	std::string hitText = std::to_string(hitCount);
 	App::Print(100, 100, hitText.c_str());
 }
