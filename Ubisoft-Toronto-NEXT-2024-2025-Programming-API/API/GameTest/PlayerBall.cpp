@@ -25,8 +25,12 @@ void PlayerBall::PlayerController(float deltaTime) {
 		hitCount++;
 	}
 	if (isButtonPressed) {
+		// Calculate directional vector
+		// V = (x2 - x1, y2 - y1)
 		float dirX = worldPosX - mouseX;
 		float dirY = worldPosY - mouseY;
+		// output normalized vector between 0-1
+		// |V| = sqrt(x^2 + y^2)
 		float magnitude = sqrt(dirX * dirX + dirY * dirY);
 
 		if (magnitude > 0.0f) {
@@ -34,6 +38,7 @@ void PlayerBall::PlayerController(float deltaTime) {
 			normalizedY = dirY / magnitude;
 		}
 		// Loop through 0% - 100% power
+		// y = sin(x) sorta
 		elapsedTime += deltaTime;
 		power = (std::sin(elapsedTime / 350) + 1.0f) / 2.0f;
 

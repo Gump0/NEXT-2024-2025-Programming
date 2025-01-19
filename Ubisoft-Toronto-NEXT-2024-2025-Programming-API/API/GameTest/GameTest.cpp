@@ -17,7 +17,7 @@
 StarBackground starB; // star background instance
 PlayerBall playerBall; // playerball instance
 SaturnHaloGoal saturn; // saturn goal instance
-GameManager gm; // gammanager instance
+GameManager gm; // gamemanager instance
 
 //------------------------------------------------------------------------
 // Called before first update. Do any initial setup here.
@@ -55,8 +55,6 @@ void Update(const float deltaTime) {
 
 	//Animations
 	starB.AnimateBackground(deltaTime);
-
-	if (App::IsKeyPressed(VK_RBUTTON)) playerBall.ApplyForce(2.5f, 2.5f); //for debugging shiz
 }
 
 //------------------------------------------------------------------------
