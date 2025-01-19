@@ -31,7 +31,7 @@ void Init() {
 
 	// Start looping track ( made by me :D )
 	// Shameless plug https://soundcloud.com/gumpthe1/what-how
-	//App::PlaySound(".\\GameData\\loopingtrack.wav", true);
+	App::PlaySound(".\\GameData\\loopingtrack.wav", true);
 }
 
 //------------------------------------------------------------------------
