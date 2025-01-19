@@ -116,6 +116,9 @@ void PlayerBall::InitPlayerBall(float spawnX, float spawnY) {
 	// CREATE HOT ANIMATIONS ONCE WE GET THERE XD
 	ballSprite->SetAnimation(ball_norm);
 	ballSprite->SetScale(ballScale);
+
+	worldPosX = spawnX;
+	worldPosY = spawnY;
 }
 
 void PlayerBall::RenderBall() {

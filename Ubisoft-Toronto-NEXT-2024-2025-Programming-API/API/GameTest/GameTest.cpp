@@ -12,25 +12,22 @@
 #include "StarBackground.h"
 #include "PlayerBall.h"
 #include "SaturnHaloGoal.h"
-#include "BoundryManager.h"
-#include "LevelData.h"
+#include "GameManager.h"
 
 StarBackground starB; // star background instance
 PlayerBall playerBall; // playerball instance
 SaturnHaloGoal saturn; // saturn goal instance
-
-BoundryManager boundryMan; // boundry manager instance
-LevelData lvlData; // level data instance
+GameManager gm; // gammanager instance
 
 //------------------------------------------------------------------------
 // Called before first update. Do any initial setup here.
 //------------------------------------------------------------------------
 void Init() {
 	starB.InitSpaceBackground();
-	playerBall.InitPlayerBall(0.0f, 0.0f);
-	saturn.InitHaloGoal(850.0f, 600.0f);
+	playerBall.InitPlayerBall(150.0f, 150.0f);
+	saturn.InitHaloGoal(850.0f, 650.0f);
 
-	boundryMan.ConstructWalls(lvlData.GetLevel1Walls());
+	gm.BuildWorld(0);
 
 	// Start looping track ( made by me :D )
 	// Shameless plug https://soundcloud.com/gumpthe1/what-how
@@ -43,11 +40,16 @@ void Init() {
 //------------------------------------------------------------------------
 void Update(const float deltaTime) {
 	playerBall.BallUpdate(deltaTime);
-	
-	saturn.UpdateHalo(deltaTime);
-	saturn.BallCollisionCheck(playerBall.worldPosX, playerBall.worldPosY);
 
-	if (boundryMan.CollisionCheck(playerBall.worldPosX, playerBall.worldPosY))
+	saturn.UpdateHalo(deltaTime);
+
+	if (saturn.BallCollisionCheck(playerBall.worldPosX, playerBall.worldPosY)) { // if ball hits goal move to next level ( if possible )
+		gm.NextLevel();
+		playerBall.InitPlayerBall(gm.currentBallSpawnX, gm.currentBallSpawnY);
+		saturn.InitHaloGoal(gm.currentHaloSpawnX, gm.currentHaloSpawnY);
+	}
+
+	if (gm.CheckPlayerCollision(playerBall.worldPosX, playerBall.worldPosY))
 		playerBall.WallBounce();
 
 	//Animations
@@ -69,7 +71,7 @@ void Render() {
 	
 	saturn.RenderHalo();
 	
-	boundryMan.DrawWalls();
+	gm.DrawBoundries();
 }
 //------------------------------------------------------------------------
 // Add your shutdown code here. Called when the APP_QUIT_KEY is pressed.
