@@ -49,7 +49,7 @@ void Update(const float deltaTime) {
 		saturn.InitHaloGoal(gm.currentHaloSpawnX, gm.currentHaloSpawnY);
 	}
 
-	if (gm.CheckPlayerCollision(playerBall.worldPosX, playerBall.worldPosY))
+	if (gm.CheckPlayerCollision(playerBall.worldPosX, playerBall.worldPosY, deltaTime)) // make ball bounce if it collides with wall
 		playerBall.WallBounce();
 
 	//Animations

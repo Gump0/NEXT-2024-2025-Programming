@@ -24,7 +24,7 @@ bool SaturnHaloGoal::BallCollisionCheck(float ballX, float ballY) {
 }
 
 void SaturnHaloGoal::EndLevel() {
-	App::PlaySound(".\\GameData\\hitsound.wav", false);
+	App::PlaySound(".\\GameData\\halosound.wav", false);
 }
 
 void SaturnHaloGoal::InitHaloGoal(float spawnX, float spawnY) {

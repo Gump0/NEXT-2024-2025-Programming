@@ -14,7 +14,7 @@ public:
 
 	void BuildWorld(int levelIndex); // called on init and whenever player completes level, this rebuilds the entire level based off it's given index
 	void NextLevel(); // increases 'levelIndex' then calls "BuildWorld" to rebuild level
-	bool CheckPlayerCollision(float ballPosX, float ballPosY); // calls boundryMan CollisionCheck() method
+	bool CheckPlayerCollision(float ballPosX, float ballPosY, float deltaTime); // calls boundryMan CollisionCheck() method
 	void DrawBoundries(); // calls boundryMan ConstructWalls() method
 	int GetLevelIndex(); // returns current level index
 

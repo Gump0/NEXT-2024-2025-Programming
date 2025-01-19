@@ -44,8 +44,8 @@ void GameManager::NextLevel() {
 	BuildWorld(levelIndex);
 }
 
-bool GameManager::CheckPlayerCollision(float ballPosX, float ballPosY) {
-	if (boundryMan.CollisionCheck(ballPosX, ballPosY))
+bool GameManager::CheckPlayerCollision(float ballPosX, float ballPosY, float deltaTime) {
+	if (boundryMan.CollisionCheck(ballPosX, ballPosY, deltaTime))
 		return true;
 	return false;
 }

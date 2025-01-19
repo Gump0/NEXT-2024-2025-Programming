@@ -18,13 +18,17 @@ void BoundryManager::DrawWalls() {
 	}
 }
 
-bool BoundryManager::CollisionCheck(float ballX, float ballY) {
-	for (const Wall& wall : c_walls) {
-		if (ballX > wall.x - (wall.width/2) && ballX < wall.x + (wall.width/2))
-			if (ballY > wall.y - (wall.height/2) && ballY < wall.y + (wall.height/2)) {
-				App::PlaySound(".\\GameData\\hitsound.wav", false);
-				return true;
-			}
+bool BoundryManager::CollisionCheck(float ballX, float ballY, float deltaTime) {
+	for (Wall& wall : c_walls) {
+		if (wall.cooldown > 0)
+			wall.cooldown -= deltaTime;
+		if (wall.cooldown <= 0)
+			if (ballX + 10 > wall.x - (wall.width/2) && ballX - 10 < wall.x + (wall.width/2))
+				if (ballY + 10 > wall.y - (wall.height/2) && ballY - 10 < wall.y + (wall.height/2)) {
+					App::PlaySound(".\\GameData\\hitsound.wav", false);
+					wall.cooldown = 0.50f;
+					return true;
+				}
 	}
 	return false;
 }
