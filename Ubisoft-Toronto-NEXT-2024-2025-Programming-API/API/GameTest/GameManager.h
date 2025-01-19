@@ -20,11 +20,12 @@ public:
 
 	float currentBallSpawnX, currentBallSpawnY; // sets ball spawn depending on level
 	float currentHaloSpawnX, currentHaloSpawnY; // sets "golf hole" spawn depending on level
+
+	int totalLevelCount = 4; // levels 1,2,3, end aka 4
 private:
 	LevelData lvlData; // local level data instance
 
 	void DestroyCurrentLevel(); // called whenever "BuildWorld" is called, to wipe prevoius level
 	
 	int levelIndex = 0; // keep track of current level
-	int totalLevelCount = 4; // levels 1,2,3, end aka 4
 };

@@ -70,6 +70,9 @@ void Render() {
 	playerBall.DebugXY();
 	
 	saturn.RenderHalo();
+
+	if(gm.GetLevelIndex() == gm.totalLevelCount - 1)
+		App::Print(450, 450, "Thanks for Playing!");
 	
 	gm.DrawBoundries();
 }

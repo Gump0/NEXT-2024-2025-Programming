@@ -14,27 +14,48 @@ std::vector<Wall> level1Walls = {   // Predefine wall data for Level 1
     {500, 750, 1100, 50},   // south wall
     {25, 385, 50, 675},     // west wall
     {1000, 385, 50, 675},   // east wall
+
+    {350, 300, 250, 50},    // middle blocks
+    {650, 550, 250, 50},
 };
 
-std::vector<Wall> level2Walls = {   // Predefine wall data for Level 1
+std::vector<Wall> level2Walls = {   // Predefine wall data for Level 2
     {500, 25, 1100, 50},    // north wall
     {500, 750, 1100, 50},   // south wall
     {25, 385, 50, 675},     // west wall
     {1000, 385, 50, 675},   // east wall
+
+    {200, 375, 300, 300},   // side blocks
+    {825, 375, 300, 300},
+    {650, 500, 50, 50},
+    {375, 250, 50, 50},
+    {520, 600, 150, 15},     // top block
 };
 
-std::vector<Wall> level3Walls = {   // Predefine wall data for Level 1
+std::vector<Wall> level3Walls = {   // Predefine wall data for Level 3
     {500, 25, 1100, 50},    // north wall
     {500, 750, 1100, 50},   // south wall
     {25, 385, 50, 675},     // west wall
     {1000, 385, 50, 675},   // east wall
+
+    {250, 475, 50, 500},   // first east wall
+    {600, 300, 50, 500},   // second westbound wall
+    {925, 675, 100, 100},
+
+    {385, 300, 25, 25},   // the anoyying blocks
+    {500, 415, 25, 25},
+    {350, 650, 25, 25},
+    {685, 260, 25, 25},
+    {800, 470, 25, 25},
+    {930, 315, 25, 25},
 };
 
-std::vector<Wall> theEndLevel = {   // Predefine wall data for Level 1
+std::vector<Wall> theEndLevel = {   // Predefine wall data for Level 4 ( END SCREEN )
     {500, 25, 1100, 50},    // north wall
     {500, 750, 1100, 50},   // south wall
     {25, 385, 50, 675},     // west wall
     {1000, 385, 50, 675},   // east wall
+
 };
 
 //------------------------------------------------------------------------
