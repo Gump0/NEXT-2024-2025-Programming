@@ -32,7 +32,7 @@ void PlayerBall::PlayerController(float deltaTime) {
 	// loop through 0% - 100% power
 	// y = sin(x)
 	elapsedTime += deltaTime;
-	power = std::sin(elapsedTime / 350);
+	power = (std::sin(elapsedTime / 350) + 1.0f) / 2.0f;
 
 	App::GetMousePos(mouseX, mouseY);
 }
@@ -40,8 +40,8 @@ void PlayerBall::PlayerController(float deltaTime) {
 void PlayerBall::DrawMouseLine() {
 	if (!App::IsKeyPressed(VK_LBUTTON)) return;
 	float r = 1;
-	float g = std::cos(elapsedTime / 350);;
-	float b = std::cos(elapsedTime / 350);;
+	float g = 1 - power;
+	float b = 1 - power;
 	App::DrawLine(worldPosX, worldPosY, mouseX, mouseY, r, g, b);
 }
 
@@ -55,20 +55,6 @@ void PlayerBall::CalculateForce(float normalX, float normalY) {
 
 	normalizedX = 0.0f;
 	normalizedY = 0.0f;
-}
-
-void PlayerBall::DebugXY() {
-	std::string x1 = std::to_string(worldPosX);
-	std::string y1 = std::to_string(worldPosY);
-	std::string x2 = std::to_string(mouseX);
-	std::string y2 = std::to_string(mouseY);
-	std::string f = std::to_string(ballVelocityY);
-
-	App::Print(500, 700, x1.c_str());
-	App::Print(500, 650, y1.c_str());
-	App::Print(500, 600, x2.c_str());
-	App::Print(500, 550, y2.c_str());
-	App::Print(500, 400, f.c_str());
 }
 
 void PlayerBall::BallRigidBody(float deltaTime) {

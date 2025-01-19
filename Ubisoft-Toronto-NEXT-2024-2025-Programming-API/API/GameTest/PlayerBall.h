@@ -18,7 +18,6 @@ public:
 	// SPRITES AND BALL INITIALIZATION
 	void InitPlayerBall(float spawnX, float spawnY); // serves as a constructor for this class, also inits sprites at spawn location
 	void RenderBall(); // renders ball during game run-time
-	void DebugXY(); // Used to show the mouse position vs ball location for debugging
 
 	int moveCount = 0; // integer that keeps track of how many times the player has hit the ball
 	float worldPosX = 500.0f, worldPosY = 400.0f; // detirmines the balls position in world-space

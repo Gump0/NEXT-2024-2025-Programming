@@ -67,7 +67,6 @@ void Render() {
 	
 	playerBall.RenderBall();
 	playerBall.DrawMouseLine();
-	playerBall.DebugXY();
 	
 	saturn.RenderHalo();
 
